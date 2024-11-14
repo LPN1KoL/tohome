@@ -1,0 +1,131 @@
+{% extends 'new_ui/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/new_ui/kab.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/new_ui/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new_ui/category.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new_ui/product_detail.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+{% endblock %}
+
+{% block content %}
+
+
+
+    <div class="container">
+
+        <div class="product-info">
+
+            <div class="product-image-block">
+                {% if product.photo %}
+                    <img class="image_photo" src="{{ product.photo.url }}">
+                {% else %}
+                    <span>Тут должно быть фото товара, но его нет</span>
+                {% endif %}
+            </div>
+            <div class="product-data-block">
+
+                {% if product.name %}
+                <div class="product-data">
+                    <span>
+                        <strong>Наименование:</strong> {{ product.name }}
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if product.product_code %}
+                <div class="product-data">
+                    <span>
+                        <strong>Код товара:</strong> {{ product.product_code }}
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if product.age_start %}
+                <div class="product-data">
+                    <span>
+                        <strong>Возраст:</strong> {{ product.age_start }} - {{ product.age_end }} лет
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if product.height %}
+                <div class="product-data">
+                    <span>
+                        <strong>Высота:</strong> {{ product.height }} (мм)
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if product.width %}
+                <div class="product-data">
+                    <span>
+                        <strong>Ширина:</strong> {{ product.width }} (мм)
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if product.length %}
+                <div class="product-data">
+                    <span>
+                        <strong>Длина:</strong> {{ product.length }} (мм)
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if product.weight %}
+                <div class="product-data">
+                    <span>
+                        <strong>Вес:</strong> {{ product.weight }} (кг)
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if product.concrete %}
+                <div class="product-data">
+                    <span>
+                        <strong>Бетон:</strong> {{ product.concrete }} (м)
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if product.installation_time %}
+                <div class="product-data">
+                    <span>
+                        <strong>Время установки:</strong> {{ product.installation_time }} (часы)
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if product.params %}
+                <div class="product-data">
+                    <span>
+                        <strong>Доп. параметры:</strong> {{ product.params }}
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if product.price %}
+                <div class="product-data-price">
+                    <span>
+                        <strong>Цена:</strong> {{ product.price }}₽
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if not on_trash %}
+                <a class="to_trash-button" href="/product/{{ product.id }}/buy">
+                    В корзину
+                </a>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

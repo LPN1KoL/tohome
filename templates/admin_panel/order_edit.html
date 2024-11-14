@@ -1,0 +1,85 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/admin_panel/edit_order.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <h1 id="add">Изменение заказа</h1>
+    <div class="edit">
+        <div class="oop">
+            <div class="filler"></div>
+                <div class="form">
+                    <form class="forma" action="" method="post" enctype="multipart/form-data">
+
+                        {% for f in form %}
+                                <div class="form-field">
+                                    <label id="label_{{ f.id_for_label }}" for="{{ f.id_for_label }}">{{ f.label }}</label>
+                                    {{ f }}
+                                </div>
+                        {% endfor %}
+
+                        {% csrf_token %}
+                        <button class="form-button" type="submit">Сохранить</button>
+                    </form>
+
+                </div>
+            <div class="filler"></div>
+        </div>
+
+        <h2>Товары:</h2>
+    <table class="tlist">
+        <thead>
+            <tr>
+                <th>Код товара</th>
+                <th>Название товара</th>
+                <th>Количество товара</th>
+                <th>Цена товара</th>
+                <th>Стоимость</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in order_products %}
+                <tr id="o-{{product.id}}" >
+                    <td>
+                        <span>{{ product.product.product_code }}</span>
+                    </td>
+                    <td>
+                        {{product.product.name}}
+                    </td>
+                    <td id="pcount-{{product.id}}" class="fio-td">
+                        {{product.pcount}}
+                    </td>
+                    <td>
+                        {{product.product.price}}₽
+                    </td>
+                    <td id="p_t_price-{{product.id}}">
+                        {{product.total_price}}₽
+                    </td>
+                    <td>
+                        <div class="actions-td">
+                            <button id="plus" class="edit zov" onclick="plus_product({{product.id}})">
+                                <image class="but-elem" src="{% static 'imgs/plus.png' %}"></image>
+                            </button>
+                            <button id="minus" class="delete zov" onclick="minus_product({{product.id}})">
+                                 <image class="but-elem" src="{% static 'imgs/minus.png' %}"></image>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        <h2 id="rice">Общая стоимость:</h2>
+        <h2 id="tprice">{{total_price}}₽</h2>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/admin_panel/edit_product.js' %}"></script>
+
+{% endblock %}

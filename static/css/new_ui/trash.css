@@ -1,0 +1,108 @@
+.trash-info {
+    margin-top: 15vh;
+    width: calc(70%);
+}
+
+.product {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    height: auto;
+    background-color: whitesmoke;
+    padding: 30px;
+    width: calc(100% - 60px);
+    margin-bottom: 1rem;
+}
+
+.info-img {
+    width: 200px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.counter {
+    display: flex;
+}
+
+.counter > button, .counter > input {
+    margin: 0;
+    padding: 0 0.5rem;
+    font-size: 20px;
+    border: 1px solid gray;
+    height: auto;
+    border-collapse: collapse;
+}
+
+.counter > input {
+    border-radius: 0;
+    width: 3vw;
+    text-align: center;
+}
+
+.first {
+    border-radius: 10px 0 0 10px;
+    background-color: #39a157;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.last {
+    border-radius: 0 10px 10px 0;
+    background-color: #39a157;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.first:hover {
+    background-color: #77d692;
+}
+
+.last:hover {
+    background-color: #77d692;
+}
+
+.total-info {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    height: auto;
+    width: 100%;
+    background-color: whitesmoke;
+    padding: 30px 0;
+    margin: 1rem;
+    border-radius: 20px;
+    margin-bottom: 3rem;
+}
+
+.total-info > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirm-order-button {
+    font-size: 20px;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    border: none;
+    background-color: #20c997;
+}
+
+.confirm-order-button:hover {
+    background-color: rgba(32, 201, 151, 0.71);
+    cursor: pointer;
+}
+
+#my_orders_link {
+    background-color: #77d692;
+    padding: 0.5rem;
+    border-radius: 10px;
+    margin-left: 1rem;
+    color: white;
+}
+
+#my_orders_link:hover {
+    background-color: #67e88c;
+}

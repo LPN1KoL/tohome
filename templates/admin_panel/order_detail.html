@@ -1,0 +1,68 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/admin_panel/admin_add_product.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin_panel/roles.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="head-block">
+        <h1>Заказ {{order.id}}</h1>
+    </div>
+
+    <h2>Товары:</h2>
+    <table class="tlist">
+        <thead>
+            <tr>
+                <th>Код товара</th>
+                <th>Название товара</th>
+                <th>Количество товара</th>
+                <th>Цена товара</th>
+                <th>Стоимость</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in order_products %}
+                <tr id="o-{{product.id}}" >
+                    <td>
+                        <span>{{ product.product.product_code }}</span>
+                    </td>
+                    <td>
+                        {{product.product.name}}
+                    </td>
+                    <td class="fio-td">
+                        {{product.pcount}}
+                    </td>
+                    <td>
+                        {{product.product.price}}₽
+                    </td>
+                    <td>
+                        {{product.total_price}}₽
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<h2>Общая стоимость: {{order.total_price}}₽</h2>
+
+<h2>Оформлен: {{ order.create_at }}</h2>
+
+<h2>Статус: {{order.get_status_display}}</h2>
+
+{% if order.user.name %}
+    <h2>Заказчик:</h2>
+    <h3>{% if order.user.name %}
+            {{order.user.name}}
+            {% if order.user.surname %}
+                {{order.user.surname}}
+            {% endif %}
+        {% endif %}</h3>
+{% endif %}
+{% if order.contacts %}
+    <h3>Контакты заказчика:</h3>
+        <h5>{{order.contacts}}</h5>
+{% endif %}
+
+{% endblock %}

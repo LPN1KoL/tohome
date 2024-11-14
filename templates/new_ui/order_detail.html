@@ -1,0 +1,54 @@
+{% extends 'new_ui/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/new_ui/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="datas">
+    <div class="head-block">
+        <h1 id="nadpiska">Заказ {{order.id}}</h1>
+    </div>
+
+    <h2 class="pisis">Товары:</h2>
+    <table class="tlist">
+        <thead>
+            <tr>
+                <th>Код товара</th>
+                <th>Название товара</th>
+                <th>Цена товара</th>
+                <th>Количество товара</th>
+                <th>Стоимость</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in order_products %}
+                <tr id="o-{{product.id}}" >
+                    <td>
+                        <span>{{ product.product.product_code }}</span>
+                    </td>
+                    <td>
+                        {{product.product.name}}
+                    </td>
+                    <td>
+                        {{product.product.price}}₽
+                    </td>
+                    <td class="fio-td">
+                        {{product.pcount}}
+                    </td>
+                    <td>
+                        {{product.total_price}}₽
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<h2 class="pisis">Общая стоимость: {{order.total_price}}₽</h2>
+
+<h2 class="pisis">Оформлен: {{ order.create_at }}</h2>
+
+<h2 class="pisis">Статус: {{order.get_status_display}}</h2>
+</div>
+{% endblock %}

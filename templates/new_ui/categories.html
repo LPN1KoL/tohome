@@ -1,0 +1,39 @@
+{% extends 'new_ui/base.html' %}
+{% load static %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/new_ui/category.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="preview">
+            <h1>Категории</h1>
+        </div>
+
+        <div class="categories-container">
+
+            {% for category in categories %}
+                <div class="category_">
+                    <a class="category" href="/categories/{{ category.cat.id }}">
+                        <div class="cat-photo">
+                            {% if category.p.photo %}
+                                <img class="cat-image" src="{{ category.p.photo.url }}">
+                            {% else %}
+                            <img class="cat-image" src="{% static 'imgs/logo.png' %}">
+                            {% endif %}
+                        </div>
+                        <h3 id="njnj">{{ category.cat.name }}</h3>
+                    </a>
+                </div>
+            {% endfor %}
+            
+        </div>
+</div>
+{% endblock %}

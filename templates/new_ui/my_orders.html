@@ -1,0 +1,46 @@
+{% extends 'new_ui/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/new_ui/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="table_o">
+
+<h1>Мои заказы</h1>
+    <table class="tlist">
+        <thead>
+            <tr>
+                <th>ID заказа</th>
+                <th>Дата</th>
+                <th>Статус заказа</th>
+                <th>Контактная информация</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr id="o-{{order.id}}" >
+                    <td onclick="document.location='/order_detail/{{order.id}}'">
+                        <span>{{ order.id }}</span>
+                    </td>
+                    <td onclick="document.location='/order_detail/{{order.id}}'">
+                        {{order.create_at}}
+                    </td>
+                    <td onclick="document.location='/order_detail/{{order.id}}'">
+                        {{order.get_status_display}}
+                    </td>
+                    <td>
+                        <div class="actions-td">
+                            <a class="edit zov" href="/order_edit/{{ order.id }}">
+                                <image id="pencil" src="{% static 'imgs/pencil.png' %}"></image>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

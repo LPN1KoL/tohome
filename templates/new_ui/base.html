@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/new_ui/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new_ui/category.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new_ui/catalog.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+<div class="cont">
+            <div class="navbar">
+
+                <img id="logo" src="{% static 'imgs/logo.svg' %}">
+
+                <ul class="main-menu">
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/examples">Примеры работ</a></li>
+                    <li><a href="/catalog">Каталог</a></li>
+                    <li><a href="/categories">Категории</a></li>
+                    <li><a href="/about">О нас</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li><a href="/trash">Корзина</a></li>
+                        <li><a href="/my_orders">Мои заказы</a></li>
+                        <li><a href="/user/{{request.user.id}}">Личный кабинет</a></li>
+                    {% endif %}
+                </ul>
+
+                {% if not request.user.is_authenticated %}
+                    <a id="to_products_link" href="/login">Авторизоваться</a>
+                {% else %}
+                    <a id="to_products_link" href="/logout">Выйти</a>
+                {% endif %}
+            </div>
+
+    <div class="navbar-mobile">
+        <ul class="main-menu">
+                    <li><a class="lio" href="/">
+                        <image class="nav-im hm" src="{% static 'imgs/home.png' %}"></image>
+                    </a></li>
+                    <li><a class="lio" href="/catalog">Каталог</a></li>
+                    <li><a class="lio" href="/categories">Категории</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li><a class="lio" href="/user/{{request.user.id}}">Профиль</a></li>
+                        <li><a class="lio" href="/">
+                            <image class="nav-im" src="{% static 'imgs/shopping-cart.png' %}"></image>
+                        </a></li>
+                    {% endif %}
+                </ul>
+
+    </div>
+
+    <div class="nlo">
+
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div class="footer">
+        <h4>© 2024 Весёлые дворики.</h4>
+    </div>
+</div>
+{% block scripts %}
+{% endblock %}
+</body>
+</html>

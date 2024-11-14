@@ -1,0 +1,73 @@
+{% extends 'new_ui/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/new_ui/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new_ui/category.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new_ui/trash.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="container">
+        <div class="trash-info">
+
+            <div class="my-orders-container">
+                <a id="my_orders_link" href="/my_orders">Мои заказы</a>
+            </div>
+
+            {% for product in products %}
+                <div class="product" id="product_{{product.product.id}}">
+
+                    <div class="info">
+                        {% if product.product.photo %}
+                            <img class="info-img" src="{{ product.product.photo.url }}">
+                        {% endif %}
+                    </div>
+
+                    <div class="info">{{ product.product.name }}</div>
+                    <div class="info">{{ product.product.product_code }}</div>
+                    <div class="info" id="price-{{ product.product.id }}">{{ product.product.price }}₽</div>
+
+                    <div class="info">
+                        <div class="counter">
+                            <button type="button" class="first" onclick="down_count({{ product.product.id }})">-</button>
+                            <input id="counter-{{ product.product.id }}" class="input-count" type="number" disabled value="{{product.pcount}}">
+                            <button type="button" class="last" onclick="up_count({{ product.product.id }})">+</button>
+                        </div>
+                    </div>
+
+                </div>
+            {% endfor %}
+
+            <div class="total-info">
+                <div class=""></div>
+                <div class=""></div>
+                <div class=""></div>
+                <div id="total_price" class="" style="color: green; font-size: 20px;">
+                    Общая стоимость: {{ total_sum }}₽
+                </div>
+                {% if products %}
+                    <div class="" id="knopka">
+                        <a href="/confirm_order" class="confirm-order-button">Заказать</a>
+                    </div>
+                {% endif %}
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/ui/trash.js' %}"></script>
+{% endblock %}

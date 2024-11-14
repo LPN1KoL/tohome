@@ -1,0 +1,52 @@
+.form, .sub-settings {
+    width: calc(100% - 4rem);
+    padding: 0 2rem;
+    margin-top: 2vh;
+}
+
+form {
+    width: 100%;
+    text-align: center;
+}
+
+.form-field {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    text-align: start;
+    margin-bottom: 0.7rem;
+}
+
+.form-field > input {
+    width: calc(100% - 2rem);
+    padding: 0.2rem 1rem;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 20px;
+    height: 2.8rem;
+}
+
+.form-button {
+    width: 60%;
+    background-color: #5897fb;
+    color: whitesmoke;
+    border: none;
+    border-radius: 7px;
+    font-size: 20px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+}
+
+.form-button:hover {
+    background-color: #447ddc;
+}
+
+.oop {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+}
+
+.datas {
+    padding: 70px;
+    padding-top: 150px
+}

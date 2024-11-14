@@ -1,0 +1,72 @@
+{% extends 'new_ui/base.html' %}
+{% load static %}
+
+{% block head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/new_ui/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new_ui/category.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new_ui/catalog.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+{% endblock %}
+
+{% block content %}
+
+
+
+
+        <form id="search-form" method="post">
+            <div id="search">
+                <input type="text" placeholder="Поиск ..." name="find" id="find">
+                <button class="button-main" type="submit">Искать</button>
+            </div>
+
+            <div id="filters">
+
+                <input class="filter-number-input" type="number" placeholder="Высота от (мм)" id="height_start" name="height_start">
+                <input class="filter-number-input" type="number" placeholder="Высота до (мм)" id="height_end" name="height_end">
+                <input class="filter-number-input" type="number" placeholder="Ширина от (мм)" id="width_start" name="width_start">
+                <input class="filter-number-input" type="number" placeholder="Ширина до (мм)" id="width_end" name="width_end">
+                <input class="filter-number-input" type="number" placeholder="Длина от (мм)"  id="len_start" name="len_start">
+                <input class="filter-number-input" type="number" placeholder="Длина до (мм)"  id="len_end" name="len_end">
+
+                <input class="filter-number-input" type="number" placeholder="Цена от (₽)" id="price_start" name="price_start">
+                <input class="filter-number-input" type="number" placeholder="Цена до (₽)" id="price_end" name="price_end">
+
+                <input class="filter-number-input" type="number" placeholder="Вес от (кг)" id="weight_start" name="weight_start">
+                <input class="filter-number-input" type="number" placeholder="Вес до (кг)" id="weight_end" name="weight_end">
+
+                <input class="filter-number-input" type="number" placeholder="Бетон от (м)" id="beton_start" name="beton_start">
+                <input class="filter-number-input" type="number" placeholder="Бетон до (м)" id="beton_end" name="beton_end">
+
+                <button class="clear-filters-button" type="button" onclick="clear_filters()">Сбросить фильтры</button>
+
+            </div>
+
+            {% csrf_token %}
+        </form>
+
+
+
+        <div class="products-container">
+
+            {% for product in products %}
+
+                <div class="catalog-product">
+                    <div class="cdcd">
+                        {% if product.photo %}
+                            <img class="catalog-product-image" src="{{ product.photo.url }}">
+                        {% endif %}
+                    </div>
+                    <div class="">
+                        <h3 class="product-name">{{ product.name }}</h3>
+                        <span class="product-price">Стоимость: {{ product.price }}₽</span><br>
+                        <a class="buy-product-link" href="/product/{{ product.id }}">Перейти</a>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+{% endblock %}
