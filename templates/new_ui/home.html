@@ -1,43 +1,15 @@
-<!DOCTYPE html>
+{% extends 'new_ui/base.html' %}
 {% load static %}
-<html lang="ru">
-<head>
+
+{% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/new_ui/home.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    {% block head %}
-    {% endblock %}
-    <title>KomShop</title>
-</head>
-<body>
+{% endblock %}
 
-    <div class="navbar-container">
-        <div class="navbar">
-
-            <img id="logo" src="{% static 'imgs/logo.svg' %}">
-
-            <ul class="main-menu">
-                <li><a href="/">Главная</a></li>
-                <li><a href="/examples">Примеры работ</a></li>
-                <li><a href="/catalog">Каталог</a></li>
-                <li><a href="/categories">Категории</a></li>
-                <li><a href="/about">О нас</a></li>
-                {% if request.user.is_authenticated %}
-                    <li><a href="/trash">Корзина</a></li>
-                    <li><a href="/my_orders">Мои заказы</a></li>
-                    <li><a href="/user/{{request.user.id}}">Личный кабинет</a></li>
-                {% endif %}
-            </ul>
-
-            {% if not request.user.is_authenticated %}
-                <a id="to_products_link" href="/login">Авторизоваться</a>
-            {% else %}
-                <a id="to_products_link" href="/logout">Выйти</a>
-            {% endif %}
-        </div>
-    </div>
+{% block content %}
 
     <div class="header">
         <h1>Весёлые дворики</h1>
@@ -54,11 +26,10 @@
                     <h1 class="product-title">{{ name_1 }}</h1>
                     <span class="price">{{ price_1 }}₽</span><br>
                     <span class="description">Погрузитесь в волшебный мир игр и приключений на нашей площадке 'Сказка'!</span><br>
-
-                    <a href="/" class="buy-button">
-                        Купить
-                    </a>
                 </div>
+                <div class="but-div"><a href="/" class="buy-button">
+                        Купить
+                    </a></div>
             </div>
             <div class="product">
                 <img class="product-image" src="{{ image_2 }}" alt="">
@@ -207,9 +178,4 @@
         </div>
     </div>
 
-    <div class="footer">
-        <h4>© 2024 Весёлые дворики.</h4>
-    </div>
-
-</body>
-</html>
+{% endblock %}

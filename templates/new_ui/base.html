@@ -45,7 +45,7 @@
                         <image class="nav-im hm" src="{% static 'imgs/home.png' %}"></image>
                     </a></li>
                     <li><a class="lio" href="/catalog">Каталог</a></li>
-                    <li><a class="lio" href="/categories">Категории</a></li>
+                    <li><button id="menus" onclick="show_menu()">Меню</button></li>
                     {% if request.user.is_authenticated %}
                         <li><a class="lio" href="/user/{{request.user.id}}">Профиль</a></li>
                         <li><a class="lio" href="/">
