@@ -39,6 +39,30 @@
                 {% endif %}
             </div>
 
+    <div id="mob_modal" style="top: -48vh" class="mobile-modal">
+        <div class="content-contain">
+            <div class="links">
+                <div class="link">
+                    <a class="mobm" href="/about">Категории</a>
+                </div>
+                <div class="link">
+                    <a class="mobm" href="/examples">Примеры работ</a>
+                </div>
+                {% if request.user.is_authenticated %}
+                    <div class="link">
+                        <a class="mobm" href="/my_orders">Мои заказы</a>
+                    </div>
+                {% endif %}
+                <div class="link">
+                    <a class="mobm" href="/about">О нас</a>
+                </div>
+            </div>
+            <div class="but-con">
+                <button id="moon" onclick="close_m()">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
     <div class="navbar-mobile">
         <ul class="main-menu">
                     <li><a class="lio" href="/">
@@ -48,25 +72,44 @@
                     <li><button id="menus" onclick="show_menu()">Меню</button></li>
                     {% if request.user.is_authenticated %}
                         <li><a class="lio" href="/user/{{request.user.id}}">Профиль</a></li>
-                        <li><a class="lio" href="/">
+                        <li><a class="lio" href="/trash">
                             <image class="nav-im" src="{% static 'imgs/shopping-cart.png' %}"></image>
+                        </a></li>
+                    {% else %}
+                        <li><a class="lio" href="/login">
+                            <image class="nav-im hm" src="{% static 'imgs/enter.png' %}"></image>
                         </a></li>
                     {% endif %}
                 </ul>
 
     </div>
+    <div class="moo">
+        <div class="nlo">
 
-    <div class="nlo">
+            {% block content %}
+            {% endblock %}
+        </div>
 
-        {% block content %}
-        {% endblock %}
-    </div>
-
-    <div class="footer">
-        <h4>© 2024 Весёлые дворики.</h4>
+        <div class="footer">
+            <h4>© 2024 Весёлые дворики.</h4>
+        </div>
     </div>
 </div>
+
+<script>
+    function show_menu(){
+        if (document.getElementById('mob_modal').style.top == '-48vh'){
+            document.getElementById('mob_modal').style.top = '0vh'}
+        else{
+            document.getElementById('mob_modal').style.top = '-48vh'}
+    }
+
+    function close_m(){
+        document.getElementById('mob_modal').style.top = '-48vh'
+    }
+</script>
 {% block scripts %}
+
 {% endblock %}
 </body>
 </html>

@@ -463,7 +463,7 @@ tbody > tr:hover {
     .navbar-mobile{
         width: 100vw;
         height: 10vh;
-        background-color: gray;
+        background-color: #FEEEEF;
     }
 
     .preview{
