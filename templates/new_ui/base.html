@@ -39,7 +39,7 @@
                 {% endif %}
             </div>
 
-    <div id="mob_modal" style="top: -48vh" class="mobile-modal">
+    <div id="mob_modal" style="top: -49vh" class="mobile-modal">
         <div class="content-contain">
             <div class="links">
                 <div class="link">
@@ -98,16 +98,17 @@
 
 <script>
     function show_menu(){
-        if (document.getElementById('mob_modal').style.top == '-48vh'){
+        if (document.getElementById('mob_modal').style.top == '-49vh'){
             document.getElementById('mob_modal').style.top = '0vh'}
         else{
-            document.getElementById('mob_modal').style.top = '-48vh'}
+            document.getElementById('mob_modal').style.top = '-49vh'}
     }
 
     function close_m(){
-        document.getElementById('mob_modal').style.top = '-48vh'
+        document.getElementById('mob_modal').style.top = '-49vh'
     }
 </script>
+
 {% block scripts %}
 
 {% endblock %}

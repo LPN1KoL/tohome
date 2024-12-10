@@ -42,7 +42,32 @@
                 <button class="clear-filters-button" type="button" onclick="clear_filters()">Сбросить фильтры</button>
 
             </div>
+            <div id="m-filters" style="left: -82vw;">
+                <div id="mob-filters">
 
+                    <input class="filter-number-input" type="number" placeholder="Высота от (мм)" id="height_start" name="height_start">
+                    <input class="filter-number-input" type="number" placeholder="Высота до (мм)" id="height_end" name="height_end">
+                    <input class="filter-number-input" type="number" placeholder="Ширина от (мм)" id="width_start" name="width_start">
+                    <input class="filter-number-input" type="number" placeholder="Ширина до (мм)" id="width_end" name="width_end">
+                    <input class="filter-number-input" type="number" placeholder="Длина от (мм)"  id="len_start" name="len_start">
+                    <input class="filter-number-input" type="number" placeholder="Длина до (мм)"  id="len_end" name="len_end">
+
+                    <input class="filter-number-input" type="number" placeholder="Цена от (₽)" id="price_start" name="price_start">
+                    <input class="filter-number-input" type="number" placeholder="Цена до (₽)" id="price_end" name="price_end">
+
+                    <input class="filter-number-input" type="number" placeholder="Вес от (кг)" id="weight_start" name="weight_start">
+                    <input class="filter-number-input" type="number" placeholder="Вес до (кг)" id="weight_end" name="weight_end">
+
+                    <input class="filter-number-input" type="number" placeholder="Бетон от (м)" id="beton_start" name="beton_start">
+                    <input class="filter-number-input" type="number" placeholder="Бетон до (м)" id="beton_end" name="beton_end">
+
+                    <button class="clear-filters-button" type="button" onclick="clear_filters()">Сбросить фильтры</button>
+                    <button type="button" onclick="close_()">Закрыть</button>
+                </div>
+            </div>
+            <div class="mob-filters">
+                <button type="button" id="fil-but" onclick="show_()">Фильтры</button>
+            </div>
             {% csrf_token %}
         </form>
 
@@ -69,4 +94,14 @@
 
         </div>
 
+<script>
+    function show_(){
+        document.getElementById('m-filters').style.left = '0vw'
+    }
+
+    function close_(){
+        document.getElementById('m-filters').style.left = '-82vw'
+    }
+</script>
 {% endblock %}
+

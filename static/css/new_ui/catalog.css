@@ -96,3 +96,60 @@
 .cdcd{
     height: 200px;
 }
+
+@media (max-width: 500px){
+    #search{
+        margin-top: 3vh;
+        display: grid;
+        grid-template-columns: 100%;
+    }
+    #find{
+        margin: 3vw;
+        padding: 0vw 2vw;
+        width: 88vw;
+    }
+    .button-main{
+        width: 60vw;
+        height: 40px;
+        margin: 2vw 20vw;
+        margin-bottom: 2vh;
+    }
+    #filters{
+        display: none;
+    }
+    .mob-filters{
+        width: 100vw;
+        height: 60px;
+        margin-bottom: 2vh;
+    }
+    #fil-but{
+        height: 40px;
+        width: 50vw;
+        margin: 10px 25vw;
+        border-radius: 20px;
+        font-size: 20px;
+        border: none;
+        background-color: #8ac926;
+        color: white;
+    }
+    #m-filters{
+        left: -82vw;
+        width: 80vw;
+        height: 100vh;
+        position: fixed;
+        z-index: 1000;
+        transition: all 0.3s ease-in-out;
+        background-color: #FEEEEF;
+    }
+}
+
+
+
+@media (min-width: 501px){
+    .mob-filters{
+        display: none;
+    }
+    #m-filters{
+        display: none;
+    }
+}

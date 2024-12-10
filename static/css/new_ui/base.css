@@ -137,15 +137,7 @@ li > a:hover {
     min-height: calc(100vh - 11rem);
 }
 
-.moo{
-    overflow: scroll;
-    height: 90vh;
-}
 
-.moo::-webkit-scrollbar{
-    display: none;
-
-}
 
 .prew{
     margin-top: 0px;
@@ -200,7 +192,15 @@ li > a:hover {
     .navbar{
         display: none;
     }
+    .moo{
+        overflow: scroll;
+        height: 90vh;
+    }
 
+    .moo::-webkit-scrollbar{
+        display: none;
+
+    }
     .navbar-mobile{
         width: 100vw;
         height: 10vh;
@@ -249,7 +249,7 @@ li > a:hover {
     z-index: 1000;
     position: fixed;
     margin-top: 12vh;
-    top: -48vh;
+    top: -49vh;
     transition: all 0.4s ease-in-out;
     border-radius: 30px;
     height: 30vh;
@@ -286,3 +286,6 @@ li > a:hover {
     }
 }
 
+.cont{
+    height: 100vh;
+}
